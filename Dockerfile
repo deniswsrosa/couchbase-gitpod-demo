@@ -7,5 +7,6 @@ RUN mkdir -p /tmp/couchbase && \
     sudo apt-get update && \
     sudo apt-get install couchbase-server && \
     cd /opt/couchbase/bin && \
+    while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:8091)" != "301" ]]; do sleep 5; done && \
     ./couchbase-cli cluster-init -c 127.0.0.1 --cluster-username Administrator --cluster-password password --services data,index,query --cluster-ramsize 512 && \
     ./couchbase-cli bucket-create -c 127.0.0.1:8091 --username Administrator --password password --bucket default --bucket-type couchbase --bucket-ramsize 256
