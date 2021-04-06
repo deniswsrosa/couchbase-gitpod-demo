@@ -15,10 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Document
-@Data
-@NoArgsConstructor
-@EqualsAndHashCode
-@AllArgsConstructor
 @CompositeQueryIndex(fields = {"id", "name desc", "companyId", "type"})
 public class Building {
 
@@ -36,4 +32,13 @@ public class Building {
     private List<Area> areas = new ArrayList<>();
     private List<String> phoneNumbers = new ArrayList<>();
 
+    public Building(){}
+    public Building(String id, String name, String companyId, String someValue, List<Area> areas, List<String> phoneNumbers) {
+        this.id = id;
+        this.name = name;
+        this.companyId = companyId;
+        this.someValue = someValue;
+        this.areas = areas;
+        this.phoneNumbers = phoneNumbers;
+    }
 }
