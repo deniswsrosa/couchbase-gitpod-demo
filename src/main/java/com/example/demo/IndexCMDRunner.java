@@ -3,7 +3,6 @@ package com.example.demo;
 import com.couchbase.client.core.error.IndexExistsException;
 import com.example.demo.entities.Building;
 import com.example.demo.service.BuildingService;
-import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.data.couchbase.core.CouchbaseTemplate;
@@ -35,7 +34,7 @@ public class IndexCMDRunner implements CommandLineRunner {
             System.out.println("Skipping index creation...");
         }
 
-        val building = new Building(BUILDING_1, "couchbase",
+        Building building = new Building(BUILDING_1, "couchbase",
                 COMPANY_2, "a value", new ArrayList<>(), new ArrayList<>());
         buildingService.save(building);
     }
