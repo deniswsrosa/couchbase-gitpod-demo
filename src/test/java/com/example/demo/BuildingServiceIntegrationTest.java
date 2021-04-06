@@ -2,7 +2,6 @@ package com.example.demo;
 
 import com.example.demo.entities.Building;
 import com.example.demo.service.BuildingService;
-import lombok.val;
 import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class BuildingServiceIntegrationTest extends DemoApplicationTests {
 
     @Test
     public void testSave() {
-        val building = new Building(BUILDING_1, "couchbase",
+        Building building = new Building(BUILDING_1, "couchbase",
                 COMPANY_2, "a value", new ArrayList<>(), new ArrayList<>());
         buildingService.save(building);
 
