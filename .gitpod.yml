@@ -4,9 +4,9 @@ tasks:
   command: java -jar target/*.jar
 
 # exposed ports
-#ports:
-#- port: 8080
-#  onOpen: open-preview
+ports:
+- port: 8091
+  onOpen: open-preview
 
 vscode:
   extensions:
