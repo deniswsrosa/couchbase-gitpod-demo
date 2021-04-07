@@ -1,4 +1,4 @@
-FROM gitpod/workspace-full
+FROM ubuntu:20.04
 
 RUN apt-get -qq update && \
     apt-get install -yq runit wget chrpath tzdata \
@@ -28,7 +28,7 @@ RUN chrpath -r '$ORIGIN/../lib' /opt/couchbase/bin/curl
 COPY scripts/start-cb.sh /
 RUN chmod 777 start-cb.sh
 
-ENTRYPOINT ./start-cb.sh  > allout.txt 2>&1
+#ENTRYPOINT ./start-cb.sh  > allout.txt 2>&1
 
 # 8091: Couchbase Web console, REST/HTTP interface
 # 8092: Views, queries, XDCR
@@ -45,5 +45,5 @@ ENTRYPOINT ./start-cb.sh  > allout.txt 2>&1
 # 18094: Full-text Search (SSL) (4.5+)
 # 18095: Analytics (SSL) (5.5+)
 # 18096: Eventing (SSL) (5.5+)
-EXPOSE 8091 8092 8093 8094 8095 8096 11207 11210 11211 18091 18092 18093 18094 18095 18096
+#EXPOSE 8091 8092 8093 8094 8095 8096 11207 11210 11211 18091 18092 18093 18094 18095 18096
 VOLUME /opt/couchbase/var
