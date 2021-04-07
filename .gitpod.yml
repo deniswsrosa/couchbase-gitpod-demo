@@ -1,4 +1,6 @@
-
+image:
+  file: .gitpod.Dockerfile
+  
 tasks:
 - name: Couchbase
   init:  sudo apt-get -qq update && \
