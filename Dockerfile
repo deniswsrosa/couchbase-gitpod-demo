@@ -2,10 +2,9 @@ FROM gitpod/workspace-full
 
 RUN mkdir -p /tmp/couchbase && \
     cd /tmp/couchbase && \
-    curl -O https://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-amd64.deb && \
-    sudo dpkg -i ./couchbase-release-1.0-amd64.deb && \
     sudo apt-get update && \
-    sudo apt-get install couchbase-server && \
+    curl -O https://packages.couchbase.com/releases/7.0.0-beta/couchbase-server-enterprise_7.0.0-beta-ubuntu20.04_amd64.deb && \
+    sudo dpkg -i ./couchbase-server-enterprise_7.0.0-beta-ubuntu20.04_amd64.deb && \
     cd /opt/couchbase/bin && \
     while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:8091)" != "301" ]]; do sleep 5; done && \
     ./couchbase-cli cluster-init -c 127.0.0.1 --cluster-username Administrator --cluster-password password --services data,index,query --cluster-ramsize 512 && \
