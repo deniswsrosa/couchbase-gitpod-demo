@@ -22,13 +22,14 @@ RUN sed -i -e '1 s/$/\/docker/' /opt/couchbase/VARIANT.txt
 
 
 COPY scripts/run /etc/service/couchbase-server/run
-RUN chown -R gitpod:gitpod /etc/service
+RUN chown -R couchbase:couchbase /etc/service
 
 RUN chrpath -r '$ORIGIN/../lib' /opt/couchbase/bin/curl
 COPY scripts/start-cb.sh /
 RUN chmod 777 start-cb.sh
 
-RUN chown -R gitpod:gitpod /opt/couchbase/
+RUN chmod -R 777 /opt/couchbase/
+
 
 # 8091: Couchbase Web console, REST/HTTP interface
 # 8092: Views, queries, XDCR
