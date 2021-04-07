@@ -1,5 +1,4 @@
 #!/bin/bash
-echo "Starting Couchbase manually..." >> /proc/1/fd/1
 ./etc/service/couchbase-server/run &
 while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:8091)" != "301" ]]; do sleep 5; done
 cd /opt/couchbase/bin

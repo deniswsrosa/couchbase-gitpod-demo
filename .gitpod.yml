@@ -3,7 +3,7 @@ image:
 
 tasks:
 - name: Couchbase
-  init:  chown -R gitpod /opt/couchbase
+  init:  ./start-cb.sh
 
 # exposed ports
 ports:
