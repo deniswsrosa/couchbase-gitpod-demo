@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 RUN apt-get -qq update && \
     apt-get install -yq runit wget chrpath tzdata \
-    lsof lshw sysstat net-tools numactl bzip2 lsb-release && \
+    lsof lshw sysstat net-tools numactl bzip2 lsb-release gnupg gnupg2 gpg gpgv2 && \
     apt-get autoremove && apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
