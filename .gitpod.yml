@@ -1,16 +1,9 @@
 image:
   file: .gitpod.Dockerfile
-  
+
 tasks:
 - name: Couchbase
-  init:  sudo apt-get -qq update && \
-    sudo apt-get -qq install curl && \
-    mkdir -p /tmp/couchbase && \
-    cd /tmp/couchbase && \
-    curl -O https://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-amd64.deb && \
-    sudo dpkg -i ./couchbase-release-1.0-amd64.deb && \
-    apt-get -qq update && \
-    sudo apt-get install couchbase-server
+  init:  echo "test"
 
 # exposed ports
 ports:
