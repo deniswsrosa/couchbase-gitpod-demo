@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 RUN apt-get -qq update && \
     apt-get install -yq runit wget chrpath tzdata \
-    lsof lshw sysstat net-tools numactl bzip2 && \
+    lsof lshw sysstat net-tools numactl bzip2 maven default-jdk && \
     apt-get autoremove && apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
