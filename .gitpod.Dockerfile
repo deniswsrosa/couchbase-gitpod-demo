@@ -37,7 +37,7 @@ RUN cd /opt/couchbase && \
              var/lib/moxi
 
 RUN chmod -R 777 /opt/couchbase/
-
+RUN chmod -R 777 /etc/service/couchbase-server/run
 
 # 8091: Couchbase Web console, REST/HTTP interface
 # 8092: Views, queries, XDCR
