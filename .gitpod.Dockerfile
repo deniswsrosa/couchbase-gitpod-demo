@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM gitpod/workspace-full
 
 RUN apt-get -qq update && \
     apt-get install -yq runit wget chrpath tzdata \
