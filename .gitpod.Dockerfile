@@ -28,6 +28,14 @@ RUN chrpath -r '$ORIGIN/../lib' /opt/couchbase/bin/curl
 COPY scripts/start-cb.sh /
 RUN chmod 777 start-cb.sh
 
+RUN cd /opt/couchbase && \
+    mkdir -p var/lib/couchbase \
+             var/lib/couchbase/config \
+             var/lib/couchbase/data \
+             var/lib/couchbase/stats \
+             var/lib/couchbase/logs \
+             var/lib/moxi
+
 RUN chmod -R 777 /opt/couchbase/
 
 
