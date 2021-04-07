@@ -15,4 +15,4 @@ FROM gitpod/workspace-full
 
 RUN mkdir -p /tmp/couchbase && \
     cd /tmp/couchbase && \
-    wget https://packages.couchbase.com/releases/7.0.0-beta/couchbase-server-enterprise_7.0.0-beta-ubuntu20.04_amd64.deb
+    wget -qO https://packages.couchbase.com/releases/7.0.0-beta/couchbase-server-enterprise_7.0.0-beta-ubuntu20.04_amd64.deb
