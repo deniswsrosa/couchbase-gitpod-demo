@@ -25,8 +25,8 @@ COPY scripts/run /etc/service/couchbase-server/run
 RUN chown -R couchbase:couchbase /etc/service
 
 RUN chrpath -r '$ORIGIN/../lib' /opt/couchbase/bin/curl
-COPY scripts/start-cb.sh /
-RUN chmod 777 start-cb.sh
+COPY scripts/start-cb.sh /opt/couchbase/
+RUN chmod 777 /opt/couchbase/start-cb.sh
 
 RUN cd /opt/couchbase && \
     mkdir -p var/lib/couchbase \
