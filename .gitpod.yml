@@ -3,7 +3,7 @@ image:
 
 tasks:
 - name: Couchbase
-  init:  ./opt/couchbase/start-cb.sh
+  init:  cd /opt/couchbase/ && ./start-cb.sh
 
 # exposed ports
 ports:
