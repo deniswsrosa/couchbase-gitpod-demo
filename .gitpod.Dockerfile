@@ -22,7 +22,6 @@ RUN sed -i -e '1 s/$/\/docker/' /opt/couchbase/VARIANT.txt
 
 
 COPY scripts/run /etc/service/couchbase-server/run
-RUN chown -R couchbase:couchbase /etc/service
 
 RUN chrpath -r '$ORIGIN/../lib' /opt/couchbase/bin/curl
 COPY scripts/start-cb.sh /opt/couchbase/
