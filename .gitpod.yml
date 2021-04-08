@@ -3,7 +3,7 @@ image:
 
 tasks:
 - name: Couchbase
-  init:  ./../../start-cb.sh
+  init:  cd / && sudo ./start-cb.sh
 
 # exposed ports
 ports:

@@ -2,7 +2,8 @@ FROM ubuntu:20.04
 
 RUN apt-get -qq update && \
     apt-get install -yq runit wget chrpath tzdata \
-    lsof lshw sysstat net-tools numactl bzip2 maven default-jdk && \
+    lsof lshw sysstat net-tools numactl bzip2 maven default-jdk \
+    sudo curl && \
     apt-get autoremove && apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -12,6 +13,12 @@ RUN if [ ! -x /usr/sbin/runsvdir-start ]; then \
 
 ENV PATH=$PATH:/opt/couchbase/bin:/opt/couchbase/bin/tools:/opt/couchbase/bin/install
 RUN groupadd -g 1000 couchbase && useradd couchbase -u 1000 -g couchbase -M
+
+# add a gitpod user that allows sudo without password
+# see https://github.com/gitpod-io/workspace-images/blob/master/base/Dockerfile
+RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod \
+    # passwordless sudo for users in the 'sudo' group
+    && sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
 
 RUN mkdir -p /tmp/couchbase && \
     cd /tmp/couchbase && \
@@ -27,17 +34,6 @@ RUN chown -R couchbase:couchbase /etc/service
 RUN chrpath -r '$ORIGIN/../lib' /opt/couchbase/bin/curl
 COPY scripts/start-cb.sh /
 RUN chmod 777 start-cb.sh
-
-RUN cd /opt/couchbase && \
-    mkdir -p var/lib/couchbase \
-             var/lib/couchbase/config \
-             var/lib/couchbase/data \
-             var/lib/couchbase/stats \
-             var/lib/couchbase/logs \
-             var/lib/moxi
-
-RUN chmod -R 777 /opt/couchbase/
-RUN chmod 777 /etc/service/couchbase-server/run
 
 # 8091: Couchbase Web console, REST/HTTP interface
 # 8092: Views, queries, XDCR
