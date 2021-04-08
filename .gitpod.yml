@@ -3,7 +3,9 @@ image:
 
 tasks:
 - name: Start Couchbase
-  before:  cd /opt/couchbase/ && ./start-cb.sh
+  before:  cd /opt/couchbase/ && ./start-cb.sh && sleep 10
+- name: Init App
+  init: echo "The Application is ready."
 
 # exposed ports
 ports:
