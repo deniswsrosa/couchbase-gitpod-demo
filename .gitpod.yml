@@ -2,13 +2,15 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-- name: Couchbase
-  init:  cd /opt/couchbase/ && ./start-cb.sh
+- name: Start Couchbase
+  before:  cd /opt/couchbase/ && ./start-cb.sh
 
 # exposed ports
 ports:
 - port: 8091
   onOpen: open-preview
+- port: 8092-10000
+  onOpen: ignore
 
 vscode:
   extensions:
